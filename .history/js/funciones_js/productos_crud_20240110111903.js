@@ -129,22 +129,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function guardarProducto() {
-
-     // Obtener el token desde sessionStoreNg
-     const token = sessionStorage.getItem('jwt'); // Nombre del token en sessionStoreNg
-     console.log(token);
-     // Verificar si se encontró un token
-     if (!token) {
-         console.error('No se encontró un token en sessionStoreNg');
-         return;
-     }
-
-     // Configurar los encabezados con el token
-     const headers = {
-         'Content-Type': 'application/json',
-         'Authorization': `Bearer ${token}`
-     };
-
     // Obtener los valores del formulario
     const nombreProducto = $("#nombreProducto").val();
     const descripcion = $("#descripcion").val();
@@ -172,6 +156,7 @@ function guardarProducto() {
     };
 
     console.log("Objeto JSON a enviar:", productoData);
+    
 
     // Realizar la llamada a la API para guardar el producto
     fetch("https://back-david.azurewebsites.net/fama-market/api/products/save", {
