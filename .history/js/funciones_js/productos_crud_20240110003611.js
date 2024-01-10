@@ -160,7 +160,6 @@ function guardarProducto() {
     // Realizar la llamada a la API para guardar el producto
     fetch("https://back-david.azurewebsites.net/fama-market/api/products/save", {
         method: "POST",
-        headers: headers,
         headers: {
             "Content-Type": "application/json",
         },
