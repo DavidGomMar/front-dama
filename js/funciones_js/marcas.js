@@ -22,7 +22,7 @@ function obtenerListaMarcas() {
     });
 
     // Realiza una solicitud GET para obtener la lista de marcas desde la API
-    fetch("http://localhost:8090/fama-market/api/brands/all", { headers })
+    fetch("https://back-david.azurewebsites.net/fama-market/api/brands/all", { headers })
         .then((response) => response.json())
         .then((marcas) => {
             // Llama a la función para mostrar las marcas en la tabla
@@ -167,7 +167,7 @@ function guardarMarca() {
             };
 
             // Realizar la solicitud POST para agregar una nueva marca con la imagen base64
-            return fetch('http://localhost:8090/fama-market/api/brands/save', {
+            return fetch('https://back-david.azurewebsites.net/fama-market/api/brands/save', {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify(marcaData),
@@ -241,7 +241,7 @@ function eliminarMarca() {
         'Authorization': `Bearer ${token}`
     };
 
-    fetch(`http://localhost:8090/fama-market/api/brands/delete/${brandIdAEliminar}`, {
+    fetch(`https://back-david.azurewebsites.net/fama-market/api/brands/delete/${brandIdAEliminar}`, {
         method: 'DELETE',
         headers: headers,
     })

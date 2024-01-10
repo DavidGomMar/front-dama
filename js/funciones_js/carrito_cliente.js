@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Obtener el ID del usuario y realizar otras operaciones después de obtenerlo
-    fetch("http://localhost:8090/fama-market/api/users/email/" + sessionStorage.getItem("email"), {headers})
+    fetch("https://back-david.azurewebsites.net/fama-market/api/users/email/" + sessionStorage.getItem("email"), {headers})
         .then((response) => response.json())
         .then((usuario) => {
             // Obtener el ID del usuario
@@ -88,7 +88,7 @@ function obtenerCarritoCliente(userId) {
         Authorization: `Bearer ${token}`,
     });
 
-    fetch(`http://localhost:8090/fama-market/api/pedido_producto/carrito/${userId}`, { headers })
+    fetch(`https://back-david.azurewebsites.net/fama-market/api/pedido_producto/carrito/${userId}`, { headers })
         .then((response) => {
             if (!response.ok) {
                 throw new Error(`Error en la solicitud: ${response.statusText}`);
@@ -200,14 +200,14 @@ if (!token) {
     });
 
     // Recuperar el ID del usuario
-    fetch("http://localhost:8090/fama-market/api/users/email/" + sessionStorage.getItem("email"), { headers })
+    fetch("https://back-david.azurewebsites.net/fama-market/api/users/email/" + sessionStorage.getItem("email"), { headers })
         .then((response) => response.json())
         .then((usuario) => {
             // Mostrar el ID del usuario en la consola (puedes quitar esta línea después de verificar)
             console.log("ID del Usuario:", usuario.userId);
 
             // Hacer una solicitud para obtener las direcciones del usuario desde la API
-            fetch(`http://localhost:8090/fama-market/api/directions/direccion/user/${usuario.userId}`, { headers })
+            fetch(`https://back-david.azurewebsites.net/fama-market/api/directions/direccion/user/${usuario.userId}`, { headers })
                 .then((response) => {
                     if (!response.ok) {
                         throw new Error(`Error en la solicitud: ${response.statusText}`);

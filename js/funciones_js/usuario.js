@@ -16,11 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             // Recuperar el ID del usuario
-            fetch("http://localhost:8090/fama-market/api/users/email/" + sessionStorage.getItem("email"), { headers })
+            fetch("https://back-david.azurewebsites.net/fama-market/api/users/email/" + sessionStorage.getItem("email"), { headers })
                 .then((response) => response.json())
                 .then((usuario) => {
 
-                    fetch(`http://localhost:8090/fama-market/api/directions/direccion/user/${usuario.userId}`, { headers })
+                    fetch(`https://back-david.azurewebsites.net/fama-market/api/directions/direccion/user/${usuario.userId}`, { headers })
                     .then((response) => {
                         if (!response.ok) {
                             throw new Error(`Error en la solicitud: ${response.statusText}`);
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                     // Hacer una solicitud para obtener la lista de colonias desde la API
-                    fetch(`http://localhost:8090/fama-market/api/colonies/all`, { headers })
+                    fetch(`https://back-david.azurewebsites.net/fama-market/api/colonies/all`, { headers })
                         .then((response) => {
                             if (!response.ok) {
                                 throw new Error(`Error en la solicitud: ${response.statusText}`);
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             // Hacer una solicitud para obtener los datos del usuario desde la API
-            fetch(`http://localhost:8090/fama-market/api/users/${usuario.userId}`, { headers })
+            fetch(`https://back-david.azurewebsites.net/fama-market/api/users/${usuario.userId}`, { headers })
                 .then((response) => {
                     if (!response.ok) {
                         throw new Error(`Error en la solicitud: ${response.statusText}`);
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para obtener el userId
     function obtenerUserId() {
-        return fetch("http://localhost:8090/fama-market/api/users/email/" + sessionStorage.getItem("email"), { headers })
+        return fetch("https://back-david.azurewebsites.net/fama-market/api/users/email/" + sessionStorage.getItem("email"), { headers })
             .then((response) => response.json())
             .then((usuario) => {
                 // Mostrar el ID del usuario en la consola (puedes quitar esta línea después de verificar)
@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 };
     
                 // Realizar la solicitud para guardar la dirección
-                return fetch("http://localhost:8090/fama-market/api/directions/save", {
+                return fetch("https://back-david.azurewebsites.net/fama-market/api/directions/save", {
                     method: "POST",
                     headers: headers,
                     body: JSON.stringify(dataDireccion),

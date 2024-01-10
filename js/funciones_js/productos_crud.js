@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     
         $.ajax({
-            url: "http://localhost:8090/fama-market/api/subcategories/all",
+            url: "https://back-david.azurewebsites.net/fama-market/api/subcategories/all",
             type: "GET",
             headers: headers, // Agrega los encabezados aquí
             success: function (data) {
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         $.ajax({
-            url: "http://localhost:8090/fama-market/api/subbrands/all",
+            url: "https://back-david.azurewebsites.net/fama-market/api/subbrands/all",
             type: "GET",
             headers: headers,
             success: function (data) {
@@ -158,7 +158,7 @@ function guardarProducto() {
     console.log("Objeto JSON a enviar:", productoData);
 
     // Realizar la llamada a la API para guardar el producto
-    fetch("http://localhost:8090/fama-market/api/products/save", {
+    fetch("https://back-david.azurewebsites.net/fama-market/api/products/save", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -193,7 +193,7 @@ function guardarImagenes(productId, codeInternalProduct) {
     console.log(arrayImagesForSends);
 
     // Realizar la llamada a la API para guardar el producto
-    fetch("http://localhost:8090/fama-market/api/images/save/product", {
+    fetch("https://back-david.azurewebsites.net/fama-market/api/images/save/product", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -227,7 +227,7 @@ function obtenerListaProductos() {
     });
 
     // Realiza una solicitud GET para obtener la lista de productos desde la API
-    fetch("http://localhost:8090/fama-market/api/products/all", { headers })
+    fetch("https://back-david.azurewebsites.net/fama-market/api/products/all", { headers })
         .then((response) => response.json())
         .then((productos) => {
             // Llama a la función para mostrar los productos en la tabla

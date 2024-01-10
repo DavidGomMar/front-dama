@@ -21,7 +21,7 @@ function obtenerCategorias() {
 
 
 
-    fetch("http://localhost:8090/fama-market/api/categories/all", { headers })
+    fetch("https://back-david.azurewebsites.net/fama-market/api/categories/all", { headers })
         .then((response) => response.json())
         .then((categorias) => {
             // Obtener la referencia de la tabla
@@ -89,7 +89,7 @@ function obtenerFamiliasParaCombo() {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
     });
-    fetch("http://localhost:8090/fama-market/api/families/all",{headers})
+    fetch("https://back-david.azurewebsites.net/fama-market/api/families/all",{headers})
         .then((response) => response.json())
         .then((familias) => {
             // Obtener el elemento select del combo box
@@ -138,7 +138,7 @@ function guardarCategorias() {
     };
 
     // Realizar la solicitud POST usando Fetch
-    fetch("http://localhost:8090/fama-market/api/categories/save", {
+    fetch("https://back-david.azurewebsites.net/fama-market/api/categories/save", {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(data)
@@ -183,7 +183,7 @@ function eliminarCategoria() {
         'Authorization': `Bearer ${token}`
     };
     // Realizar la solicitud DELETE usando Fetch
-    fetch(`http://localhost:8090/fama-market/api/categories/delete/${categoriaIdAEliminar}`, {
+    fetch(`https://back-david.azurewebsites.net/fama-market/api/categories/delete/${categoriaIdAEliminar}`, {
         method: 'DELETE',
         headers: headers
     })
@@ -223,7 +223,7 @@ function obtenerListaCategorias() {
         'Authorization': `Bearer ${token}`
     });
     
-    fetch("http://localhost:8090/fama-market/api/categories/all", {headers})
+    fetch("https://back-david.azurewebsites.net/fama-market/api/categories/all", {headers})
         .then((response) => response.json())
         .then((categorias) => {
             // Obtener la referencia de la tabla

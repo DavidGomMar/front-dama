@@ -47,7 +47,7 @@ btn.addEventListener("click", async function (event) {
 
     try {
         console.log("Datos a enviar:", JSON.stringify(data));
-        const response = await fetch("http://localhost:8090/fama-market/api/auth/login", options);
+        const response = await fetch("https://back-david.azurewebsites.net/fama-market/api/auth/login", options);
         console.log("Respuesta del servidor:", response);
 
         if (!response.ok) {

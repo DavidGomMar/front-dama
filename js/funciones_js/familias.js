@@ -18,7 +18,7 @@ function obtenerLista() {
         'Authorization': `Bearer ${token}`
     });
 
-    fetch("http://localhost:8090/fama-market/api/families/all", { headers })
+    fetch("https://back-david.azurewebsites.net/fama-market/api/families/all", { headers })
         .then((response) => response.json())
         .then((elementos) => {
             console.log(elementos);
@@ -76,7 +76,7 @@ function guardarFamilia() {
     };
 
     // Realizar la solicitud POST usando Fetch
-    fetch("http://localhost:8090/fama-market/api/families/save", {
+    fetch("https://back-david.azurewebsites.net/fama-market/api/families/save", {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(data)
@@ -122,7 +122,7 @@ async function eliminarFamilia() {
     };
 
     try {
-        const response = await fetch(`http://localhost:8090/fama-market/api/families/delete/${familiaIdAEliminar}`, {
+        const response = await fetch(`https://back-david.azurewebsites.net/fama-market/api/families/delete/${familiaIdAEliminar}`, {
             method: 'DELETE',
             headers: headers
         });

@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Hacer la solicitud a la API
-    fetch("http://localhost:8090/fama-market/api/subcategories/all", {headers})
+    fetch("https://back-david.azurewebsites.net/fama-market/api/subcategories/all", {headers})
         .then((response) => {
             if (!response.ok) {
                 throw new Error(`Error en la solicitud: ${response.status}`);
@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function redirigirAProductosPorSubcategoria(subcategoriaId) {
     // Construye la URL con el ID de la subcategoría
-    const apiUrl = `http://localhost:8090/fama-market/api/products/findBySubcategoriaIdCategoria/${subcategoriaId}`;
+    const apiUrl = `https://back-david.azurewebsites.net/fama-market/api/products/findBySubcategoriaIdCategoria/${subcategoriaId}`;
 
     // Realiza la solicitud GET para obtener los productos de la subcategoría
     fetch(apiUrl)

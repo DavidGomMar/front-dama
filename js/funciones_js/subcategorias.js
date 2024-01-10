@@ -22,7 +22,7 @@ function obtenerListaSubcategorias() {
         });
 
 
-        fetch("http://localhost:8090/fama-market/api/subcategories/all", { headers })
+        fetch("https://back-david.azurewebsites.net/fama-market/api/subcategories/all", { headers })
         .then((response) => {
             if (!response.ok) {
                 throw new Error(`Error en la solicitud: ${response.status} ${response.statusText}`);
@@ -93,7 +93,7 @@ function eliminarSubcategoria() {
         'Authorization': `Bearer ${token}`
     };
     // Realizar la solicitud DELETE usando Fetch
-    fetch(`http://localhost:8090/fama-market/api/subcategories/delete/${subcategoriaIdAEliminar}`, {
+    fetch(`https://back-david.azurewebsites.net/fama-market/api/subcategories/delete/${subcategoriaIdAEliminar}`, {
         method: 'DELETE',
         headers: headers
     })
@@ -163,7 +163,7 @@ function cargarCategoriasEnCombobox() {
     var categoriasSelect = document.getElementById('categoriasSelect');
 
     // Realizar una solicitud para obtener la lista de categorías desde tu API
-    fetch('http://localhost:8090/fama-market/api/categories/all',{headers})
+    fetch('https://back-david.azurewebsites.net/fama-market/api/categories/all',{headers})
         .then(response => response.json())
         .then(categorias => {
             // Limpiar las opciones actuales del combobox
@@ -210,7 +210,7 @@ function guardarSubcategorias() {
     };
 
     // Realizar la solicitud POST usando Fetch
-    fetch('http://localhost:8090/fama-market/api/subcategories/save', {
+    fetch('https://back-david.azurewebsites.net/fama-market/api/subcategories/save', {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(data)
@@ -250,7 +250,7 @@ function actualizarTablaSubcategorias() {
     var tablaSubcategorias = document.getElementById('tablaSubcategorias');
 
     // Realizar una solicitud para obtener la lista actualizada de subcategorías desde tu API
-    fetch('http://localhost:8090/fama-market/api/subcategories/all', {headers})
+    fetch('https://back-david.azurewebsites.net/fama-market/api/subcategories/all', {headers})
         .then(response => response.json())
         .then(subcategorias => {
             // Limpiar las filas actuales de la tabla

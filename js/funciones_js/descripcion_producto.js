@@ -16,7 +16,7 @@ if (!productId) {
             Authorization: `Bearer ${token}`,
         });
 
-        fetch(`http://localhost:8090/fama-market/api/products/${productId}`, {
+        fetch(`https://back-david.azurewebsites.net/fama-market/api/products/${productId}`, {
             method: 'GET',
             headers: headers,
         })

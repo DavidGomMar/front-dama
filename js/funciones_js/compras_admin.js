@@ -16,7 +16,7 @@ function obtenerCompras(){
         Authorization: `Bearer ${token}`,
     });
 
-    fetch("http://localhost:8090/fama-market/api/compras/all",{headers})
+    fetch("https://back-david.azurewebsites.net/fama-market/api/compras/all",{headers})
         .then((response) => response.json())
         .then((compras) => {
             // Llama a la función para mostrar los productos en la tabla

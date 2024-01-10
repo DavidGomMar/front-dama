@@ -20,7 +20,7 @@ function obtenerListaSubmarcas() {
     });
 
     // Realiza una solicitud GET para obtener la lista de submarcas desde la API
-    fetch("http://localhost:8090/fama-market/api/subbrands/all", {headers})
+    fetch("https://back-david.azurewebsites.net/fama-market/api/subbrands/all", {headers})
         .then((response) => response.json())
         .then((submarcas) => {
             // Llama a la función para mostrar las submarcas en la tabla

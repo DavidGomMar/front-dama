@@ -17,7 +17,7 @@ function agregarAlCarrito(productId) {
         });
 
                 // Recuperar el ID del usuario
-                fetch("http://localhost:8090/fama-market/api/users/email/" + sessionStorage.getItem("email"), { headers })
+                fetch("https://back-david.azurewebsites.net/fama-market/api/users/email/" + sessionStorage.getItem("email"), { headers })
                     .then((response) => response.json())
                     .then((usuario) => {
                         // Crear el objeto de pedido
@@ -33,7 +33,7 @@ function agregarAlCarrito(productId) {
                         
 
                 // Realizar la solicitud POST usando Fetch
-                fetch("http://localhost:8090/fama-market/api/pedido/agregarProducto", {
+                fetch("https://back-david.azurewebsites.net/fama-market/api/pedido/agregarProducto", {
                     method: 'POST',
                     headers: headers,
                     body: JSON.stringify(dataOrder) // Ajustado el nombre del objeto a enviar

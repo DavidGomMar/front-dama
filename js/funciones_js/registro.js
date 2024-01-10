@@ -13,7 +13,7 @@ function registrarUsuario(personId) {
 
     console.log(dataUser)
     
-    fetch('http://localhost:8090/fama-market/api/users/save', {
+    fetch('https://back-david.azurewebsites.net/fama-market/api/users/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ document.getElementById('registrationForm').addEventListener('submit', function 
                 "personPhone" : telefono
             };
     
-        return fetch('http://localhost:8090/fama-market/api/persons/save', {
+        return fetch('https://back-david.azurewebsites.net/fama-market/api/persons/save', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
