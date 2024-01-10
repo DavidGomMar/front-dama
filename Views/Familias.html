@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="apple-touch-icon" href="img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="./../css/bootstrap.min.css">
+    <link rel="stylesheet" href="./../css/templatemo.css">
+    <link rel="stylesheet" href="./../css/style.css">
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="./../css/fontawesome.min.css">
+    <link href="./../css/style_header.css" rel="stylesheet">
+</head>
+<body>
+
+<style>
+    
+    .containerr {
+        margin-top: 50px;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #007bff;
+        font-size: 28px;
+    }
+
+    .btn-agregar {
+        background-color: #28a745;
+        color: #ffffff;
+    }
+
+    .btn-editar,
+    .btn-eliminar {
+        background-color: #28a745;
+        color: #ffffff;
+        border-radius: 20px;
+        font-size: 25px;
+    }
+
+    .btn-eliminar {
+        background-color: #dc3545;
+        /* Cambiado a rojo */
+    }
+
+    /* Aumentar el tamaño de la letra en la tabla */
+    table {
+        font-size: 28px;
+    }
+</style>
+
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row align-items-center py-3 px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a href="" class="text-decoration-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                            class="text-primary font-weight-bold border px-3 mr-1">FERRE - FAMA</span></h1>
+                </a>
+            </div>
+            <div class="col-lg-6 col-6 text-left">
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for products">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-3 col-6 text-right">
+                <a href="compras-administrador.html" class="btn border">
+                    <i class="fas fa-shopping-cart text-primary"></i>
+                </a>
+                <a href="login.html" class="btn border">
+                    <i class="fa fa-user" aria-hidden="true">Iniciar sesion</i>
+                </a>
+                <a href="register.html" class="btn border">
+                    <i class="fa fa-user" aria-hidden="true">Registrarse</i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid mb-5">
+        <div class="row border-top px-xl-5">
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            
+                            <div class="container">
+                                <form id="redireccionForm" action="" method="get">
+                                    <div class="form-group">
+                                        <select class="form-control" id="acciones" name="accion" onchange="redirigir()">
+                                            <option value="" disabled selected>Selecciona una acción</option>
+                                            <option value="agregarFamilias">Agregar Familias</option>
+                                            <option value="agregarCategorias">Agregar Categorías</option>
+                                            <option value="agregarSubcategorias">Agregar Subcategorías</option>
+                                            <option value="agregarMarcas">Agregar Marcas</option>
+                                            <option value="agregarSubmarcas">Agregar Submarcas</option>
+                                            <option value="agregarProductos">Agregar Productos</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-lg-3 d-flex justify-content-end align-items-center">
+                
+            </div>
+        </div>
+        <hr class="my-8">
+    </div>
+    <!-- Navbar End -->
+
+
+<div class="container">
+    <h2 class="mb-4">CRUD de Familias</h2>
+
+    <!-- Botón para abrir el modal de agregar submarca -->
+    <button type="button" class="btn btn-success text-white mt-4" data-bs-toggle="modal"
+        data-bs-target="#modalFamilias">
+        Agregar Familia
+    </button>
+    <!-- Agrega esto donde desees en tu HTML, por ejemplo, encima de tu tabla de familias -->
+    <div class="mb-3">
+        <label for="buscadorFamiliasInput" class="form-label">Buscar Familias:</label>
+        <input type="text" class="form-control" id="buscadorFamiliasInput" oninput="filtrarTablaFamilias()" placeholder="Escribe para buscar familias">
+    </div>
+    <!-- Tabla para mostrar las submarcas -->
+    <table id="tablaFamilias" class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí se agregarán las filas de Familias dinámicamente desde el servidor -->
+            
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal para agregar Familias -->
+<div class="modal fade" id="modalFamilias" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Familias</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario para agregar Familiaa -->
+                <form id="FamiliaForm">
+                    <div class="mb-3">
+                        <label for="familiaInput" class="form-label">Nombre de la Familia:</label>
+                        <input type="text" class="form-control" id="familiaInput" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="guardarFamilia()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para editar Familias -->
+<div class="modal fade" id="modalEditarFamilias" tabindex="-1" role="dialog" aria-labelledby="modalEditarFamiliasLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Familias</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario para edtar Familiaa -->
+                <form id="FamiliaForm">
+                    <div class="mb-3">
+                        <label for="familiaInput" class="form-label">Nombre de la Familia:</label>
+                        <input type="text" class="form-control" id="familiaInput" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="editarFamilia()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para eliminar familias -->
+<div class="modal fade" id="modalEliminarFamilias" tabindex="-1" role="dialog" aria-labelledby="modalEliminarfamiliaLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEliminarFamiliaLabel">Eliminar Familia</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Deseas eliminar esta familia?</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger" onclick="eliminarFamilia()">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Agrega los enlaces a Bootstrap JS y Popper.js -->
+<script src="./../js/jquery-1.11.0.min.js"></script>
+<script src="./../js/bootstrap.bundle.min.js"></script>
+<script src="./../js/jquery-migrate-1.2.1.min.js"></script>
+<script src="./../js/funciones_js/header_admin_vistas.js"></script>
+<script src="./../js/funciones_js/familias.js"></script>
+<script src="./../js/templatemo.js"></script>
+<script src="./../js/custom.js"></script>
+
+
+
+
+</body>
+</html>

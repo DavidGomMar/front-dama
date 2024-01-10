@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Index Admin</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/templatemo.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link href="css/style_header.css" rel="stylesheet">
+
+</head>
+
+<style>
+    iframe {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .nav {
+        list-style: none;
+        margin: 0;
+        /* Agregado para evitar el espacio predeterminado del margen */
+    }
+
+    .nav>li {
+        float: left;
+        position: relative;
+    }
+
+    .nav li a {
+        background-color: #ffffff;
+        color: #000000;
+        text-decoration: none;
+        padding: 10px 12px;
+        display: block;
+    }
+
+    .nav li a:hover {
+        background-color: #b46239;
+    }
+
+    .nav li ul {
+        display: none;
+        position: absolute;
+        min-width: 200px;
+        /* Tamaño fijo para los submenús */
+        height: 300px;
+        /* Altura fija para los submenús */
+        top: 300%;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .nav li ul li {
+        width: 100%;
+        /* Ocupar todo el ancho del submenú */
+        text-align: left;
+        /* Alinear el texto a la izquierda */
+    }
+
+    .nav li ul li ul {
+        left: 100%;
+        top: 0;
+    }
+
+    .nav li:hover>ul {
+        display: block;
+    }
+
+    .nav li ul li:hover>ul {
+        display: block;
+        left: 100%;
+        top: 0;
+    }
+
+    /* Alineación de submenús hacia arriba */
+    .nav li ul li ul {
+        left: 100%;
+        top: 0;
+    }
+</style>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row align-items-center py-3 px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a href="" class="text-decoration-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                            class="text-primary font-weight-bold border px-3 mr-1">FERRE - FAMA</span></h1>
+                </a>
+            </div>
+            <div class="col-lg-6 col-6 text-left">
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for products">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-3 col-6 text-right">
+                <a href="Views/compras-administrador.html" class="btn border">
+                    <i class="fas fa-shopping-cart text-primary"></i>
+                </a>
+                <a href="Views/login.html" class="btn border">
+                    <i class="fa fa-user" aria-hidden="true">Iniciar sesion</i>
+                </a>
+                <a href="Views/register.html" class="btn border">
+                    <i class="fa fa-user" aria-hidden="true">Registrarse</i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid mb-5">
+        <div class="row border-top px-xl-5">
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            
+                            <div class="container">
+                                <form id="redireccionForm" action="" method="get">
+                                    <div class="form-group">
+                                        <select class="form-control" id="acciones" name="accion" onchange="redirigir()">
+                                            <option value="" disabled selected>Selecciona una acción</option>
+                                            <option value="agregarFamilias">Agregar Familias</option>
+                                            <option value="agregarCategorias">Agregar Categorías</option>
+                                            <option value="agregarSubcategorias">Agregar Subcategorías</option>
+                                            <option value="agregarMarcas">Agregar Marcas</option>
+                                            <option value="agregarSubmarcas">Agregar Submarcas</option>
+                                            <option value="agregarProductos">Agregar Productos</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-lg-3 d-flex justify-content-end align-items-center">
+                
+            </div>
+        </div>
+        <hr class="my-8">
+    </div>
+    <!-- Navbar End -->
+
+
+    <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel"
+        role="button" data-bs-slide="prev">
+        <i class="fas fa-chevron-left"></i>
+    </a>
+    <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel"
+        role="button" data-bs-slide="next">
+        <i class="fas fa-chevron-right"></i>
+    </a>
+    </div>
+    <!-- End Banner Hero -->
+
+    <!-- Start Categories of The Month -->
+    <section class="container py-5">
+        <div class="row text-center pt-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">MARCAS</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="#"><img src="img/Marcas/3 en 1.png" class="rounded-circle img-fluid border"></a>
+                <h5 class="text-center mt-3 mb-3">3 EN 1 </h5>
+            </div>
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="#"><img src="img/Marcas/Truper.jpeg" class="rounded-circle img-fluid border"></a>
+                <h2 class="h5 text-center mt-3 mb-3">Truper</h2>
+            </div>
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="#"><img src="img/Marcas/henkel.png" class="rounded-circle img-fluid border"></a>
+                <h2 class="h5 text-center mt-3 mb-3">Henkel</h2>
+            </div>
+        </div>
+    </section>
+    <!-- End Categories of The Month -->
+
+    <div class="w-100 bg-black py-3">
+        <div class="container">
+            <div class="row pt-2">
+                <div class="col-12">
+                    <p class="text-left text-light">
+                        Copyright &copy; 2021 Company Name | Designed by <a rel="sponsored"
+                            href="https://templatemo.com" target="_blank">TemplateMo</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery (deberías incluirlo solo una vez) -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/templatemo.js"></script>
+    <script src="js/funciones_js/jwt-decode.js"></script>
+    <script src="js/funciones_js/header_admin.js"></script>
+    <script src="js/funciones_js/validate_token.js"></script>
+    <script src="js/funciones_js/validate_admin.js"></script>
+    <script src="js/custom.js"></script>
+
+
+</body>
+
+</html>

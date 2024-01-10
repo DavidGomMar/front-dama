@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compras-cliente</title>
+    <link rel="apple-touch-icon" href="img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="./../css/bootstrap.min.css">
+    <link rel="stylesheet" href="./../css/templatemo.css">
+    <link rel="stylesheet" href="./../css/style.css">
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="./../css/fontawesome.min.css">
+    <link href="./../css/style_header.css" rel="stylesheet">
+    <link href="./../css/compras.css" rel="stylesheet">
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .contenedor-productos {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+
+    .item {
+        border: 1px solid #ddd;
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+        max-width: 200px;
+        /* Ajusta el ancho según tus necesidades */
+        flex: 0 0 auto;
+        /* No permitir que los productos se encogieran */
+    }
+
+    .item:hover {
+        transform: scale(1.05);
+    }
+
+    .contenedor-foto {
+        position: relative;
+        overflow: hidden;
+        height: 150px;
+        /* Ajusta la altura según tus necesidades */
+    }
+
+    .contenedor-foto img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .descripcion {
+        margin: 10px 0;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .precio {
+        color: #4caf50;
+        /* Color verde para ferretería */
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .agregar-carrito-btn {
+        display: block;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    .titulo-productos {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    iframe {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .nav {
+        list-style: none;
+        margin: 0;
+        /* Agregado para evitar el espacio predeterminado del margen */
+    }
+
+    .nav>li {
+        float: left;
+        position: relative;
+    }
+
+    .nav li a {
+        background-color: #ffffff;
+        color: #000000;
+        text-decoration: none;
+        padding: 10px 12px;
+        display: block;
+    }
+
+    .nav li a:hover {
+        background-color: #b46239;
+    }
+
+    .nav li ul {
+        display: none;
+        position: absolute;
+        min-width: 200px;
+        /* Tamaño fijo para los submenús */
+        height: 300px;
+        /* Altura fija para los submenús */
+        top: 300%;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .nav li ul li {
+        width: 100%;
+        /* Ocupar todo el ancho del submenú */
+        text-align: left;
+        /* Alinear el texto a la izquierda */
+    }
+
+    .nav li ul li ul {
+        left: 100%;
+        top: 0;
+    }
+
+    .nav li:hover>ul {
+        display: block;
+    }
+
+    .nav li ul li:hover>ul {
+        display: block;
+        left: 100%;
+        top: 0;
+    }
+
+    /* Alineación de submenús hacia arriba */
+    .nav li ul li ul {
+        left: 100%;
+        top: 0;
+    }
+</style>
+
+<body>
+
+        <!-- Topbar Start -->
+        <div class="container-fluid">
+            <div class="row align-items-center py-3 px-xl-5">
+                <div class="col-lg-3 d-none d-lg-block">
+                    <a href="./../index.html" class="text-decoration-none">
+                        <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                                class="text-primary font-weight-bold border px-3 mr-1">FERRE - FAMA</span></h1>
+                    </a>
+                </div>
+                <div class="col-lg-6 col-6 text-left">
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for products">
+                            <div class="input-group-append">
+                                <span class="input-group-text bg-transparent text-primary">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-3 col-6 text-right">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="container">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span id="usuario_nav">Usuario Logeado</span>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <li><a class="dropdown-item" href="usuario.html"><i class="fas fa-user-clock"></i> Mi Perfil</a></li>
+                                            <li><a class="dropdown-item" href="compras_cliente.html"><i class="fas fa-shopping-basket"></i> Mis Pedidos</a></li>
+                                            <li><a class="dropdown-item" href="../controllers/logout.php"><i class="fas fa-user-times"></i> Cerrar Sesión</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <a href="carrito_cliente.html" class="btn border">
+                        <i class="fas fa-shopping-cart text-primary"></i>
+                    </a>
+    
+                    <a href="Views/login.html" class="btn border">
+                        <i class="fa fa-user" aria-hidden="true">Iniciar sesion</i>
+                    </a>
+                    <a href="Views/register.html" class="btn border">
+                        <i class="fa fa-user" aria-hidden="true">Registrarse</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Topbar End -->
+    
+        <!-- Navbar Start -->
+        <div class="container-fluid mb-5">
+            <div class="row border-top px-xl-5">
+                <div class="col-lg-9">
+                    <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                        <a href="" class="text-decoration-none d-block d-lg-none">
+                            <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                                    class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                        </a>
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                            <div class="navbar-nav mr-auto py-0">
+                                <!-- Dropdown Start -->
+                                <div class="nav-item dropdown">
+                                    <div>
+                                        <ul class="nav">
+                                            <li><a href="#">Familias</a>
+                                                <ul id="familiasMenu">
+                                                    <!-- Familias se llenará dinámicamente -->
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-lg-3 d-flex justify-content-end align-items-center">
+    
+                </div>
+            </div>
+            <hr class="my-8">
+        </div>
+        <!-- Navbar End -->
+        
+        <div class="compras-container">
+            <table class="compras-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Estatus de Compra</th>
+                        <th>Estatus de Envío</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2023-01-01</td>
+                        <td>Producto 1</td>
+                        <td><img src="./../img/products/candado de hierro.jpg" alt="" class="compras-producto-imagen"></td>
+                        <td>$20.00</td>
+                        <td class="compras-estatus-entregado">Completado</td>
+                        <td>Pendiente</td>
+                    </tr>
+                    <tr>
+                        <td>2023-02-15</td>
+                        <td>Producto 2</td>
+                        <td><img src="./../img/products/candado2.jpg" alt="#" class="compras-producto-imagen"></td>
+                        <td>$30.00</td>
+                        <td>Completada</td>
+                        <td>En Camino</td>
+                    </tr>
+                    <!-- Agrega más filas según sea necesario -->
+                </tbody>
+            </table>
+        </div>
+    
+        
+
+
+
+    <!-- Start Script -->
+    <script src="./../js/jquery-1.11.0.min.js"></script>
+    <script src="./../js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="./../js/funciones_js/header_cliente_vistas.js"></script>
+    <script src="./../js/funciones_js/carrito_cliente.js"></script>
+    <script src="./../js/bootstrap.bundle.min.js"></script>
+    <script src="./../js/templatemo.js"></script>
+    <script src="./../js/custom.js"></script>
+    <!-- End Script -->
+
+</body>
+</html>

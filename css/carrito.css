@@ -1,0 +1,92 @@
+/* Estilos del contenedor que envuelve el carrito */
+#contenedor-principal {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    min-height: 200vh; /* Asegura que el contenedor ocupe al menos el 100% de la altura de la ventana */
+    justify-content: center;
+    align-items: above;
+  }
+
+/* Estilos del carrito de compras */
+#carrito {
+    display: flex;
+    width: 90%;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #carrito #productos {
+    flex: 2;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+  }
+  
+  #carrito #total {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  #total p.precio {
+    font-size: 64px; /* Ajusta el tamaño del texto según tus preferencias */
+    color: #000000; /* Color negro */
+  }
+
+  #carrito #boton-pagar {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Estilos de la sección del carrito de compras */
+  #carrito .cart-container {
+    width: 80%;
+    margin: 20px;
+  }
+  
+  #carrito .cart-items {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #carrito .cart-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  
+  #carrito .item-info img {
+    max-width: 100px;
+    margin-right: 20px;
+  }
+  
+  #carrito .quantity-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  #carrito .quantity-btn {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  #carrito .remove-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
