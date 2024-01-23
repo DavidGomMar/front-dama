@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="apple-touch-icon" href="img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="./../css/bootstrap.min.css">
+    <link rel="stylesheet" href="./../css/templatemo.css">
+    <link rel="stylesheet" href="./../css/style.css">
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="./../css/fontawesome.min.css">
+    <link href="./../css/style_header.css" rel="stylesheet">
+    <link href="./../css/carrito.css" rel="stylesheet">
+    <script  src="https://www.paypal.com/sdk/js?client-id=AQU5bSL1tfH0oVOyqD6idtv6yvpZLBgas2iad7rXC3T8Oib0tAJtCr5NL91ajTS3knSH1Kfw6r7wkGk1&currency=MXN"></script>
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    
+    /* Estilos para la sección de productos */
+    .contenedor-productos {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap; /* Modificado para permitir el flujo vertical */
+        margin: 10px; /* Agregado para espacio alrededor del contenedor */
+    }
+    
+    .item {
+        border: 1px solid #ddd;
+        margin: 10px;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+        max-width: 200px;
+        box-sizing: border-box; /* Agregado para evitar que el borde afecte el ancho */
+    }
+    
+    .item:hover {
+        transform: scale(1.05);
+    }
+    
+    .contenedor-foto {
+        position: relative;
+        overflow: hidden;
+        height: 150px;
+    }
+    
+    .contenedor-foto img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .descripcion {
+        margin: 10px 0;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    
+    .precio {
+        color: #4caf50;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .agregar-carrito-btn {
+        display: block;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    
+    .titulo-productos {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    /* Estilos para la barra de navegación */
+    nav {
+        list-style: none;
+        margin: 0;
+    }
+    
+    nav>li {
+        float: left;
+        position: relative;
+    }
+    
+    nav li a {
+        background-color: #ffffff;
+        color: #000000;
+        text-decoration: none;
+        padding: 10px 12px;
+        display: block;
+    }
+    
+    nav li a:hover {
+        background-color: #b46239;
+    }
+    
+    nav li ul {
+        display: none;
+        position: absolute;
+        min-width: 200px;
+        height: auto;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+    }
+    
+    nav li ul li {
+        width: 100%;
+        text-align: left;
+    }
+    
+    nav li ul li ul {
+        left: 100%;
+        top: 0;
+    }
+    
+    nav li:hover>ul {
+        display: block;
+    }
+    
+    nav li ul li:hover>ul {
+        display: block;
+        left: 100%;
+        top: 0;
+    }
+    
+</style>
+
+<body>
+
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row align-items-center py-3 px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a href="./../index.html" class="text-decoration-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                            class="text-primary font-weight-bold border px-3 mr-1">FERRE - FAMA</span></h1>
+                </a>
+            </div>
+            <div class="col-lg-6 col-6 text-left">
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for products">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-3 col-6 text-right">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span id="usuario_nav">Usuario Logeado</span>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <li><a class="dropdown-item" href="usuario.html"><i
+                                                    class="fas fa-user-clock"></i> Mi Perfil</a></li>
+                                        <li><a class="dropdown-item" href="compras_cliente.html"><i
+                                                    class="fas fa-shopping-basket"></i> Mis Pedidos</a></li>
+                                                    <button id="cerrarSesionButton" type="button"><i class="fas fa-user-times"></i> Cerrar Sesión</button>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <a href="carrito_cliente.html" class="btn border">
+                    <i class="fas fa-shopping-cart text-primary"></i>
+                </a>
+                <!-- Botones de inicio de sesión y registro -->
+                <a href="Views/login.html" id="loginButton" class="btn border">
+                    <i class="fa fa-user" aria-hidden="true">Iniciar sesión</i>
+                </a>
+                <a href="Views/register.html" id="registerButton" class="btn border">
+                    <i class="fa fa-user" aria-hidden="true">Registrarse</i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid mb-5">
+        <div class="row border-top px-xl-5">
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                    <a href="" class="text-decoration-none d-block d-lg-none">
+                        <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                                class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            <!-- Dropdown Start -->
+                            <div class="nav-item dropdown">
+                                <div>
+                                    <ul class="nav">
+                                        <li><a href="#">Familias</a>
+                                            <ul id="familiasMenu">
+                                                <!-- Familias se llenará dinámicamente -->
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-lg-3 d-flex justify-content-end align-items-center">
+
+            </div>
+        </div>
+        <hr class="my-8">
+    </div>
+    <!-- Navbar End -->
+
+    <div id="contenedor-principal">
+        <div id="carrito">
+            <div id="productos">
+                <div class="cart-items">
+                    <div class="cart-item" data-product-id="1">
+                        <div class="item-info">
+                            <img id="product-image" src="product1.jpg" alt="Producto 1">
+                            <div class="details">
+                                <h2 id="nameProduct"></h2>
+                                <p id="amountProduct"></p>
+                                
+                            </div>
+                        </div>
+                        <div class="item-actions">
+                            <button class="remove-btn" id="remove-btn-1">Eliminar</button>
+                        </div>
+                    </div>
+                    <!-- Agrega más productos según sea necesario -->
+                </div>
+            </div>
+            
+            <div id="total">
+                <h2>Total:</h2>
+                <p class="precio" id="totalpagar"></p>
+                <div id="direccion" style="margin-top: 10px; margin-bottom: 50px;">
+                    <label for="seleccionDireccion">Seleccione la dirección:</label>
+                    <select id="seleccionDireccion" style="width: 100%; height: 40px;">
+                        <option value="direccion1">Dirección 1</option>
+                        <option value="direccion2">Dirección 2</option>
+                        <option value="direccion3">Dirección 3</option>
+                        <!-- Puedes agregar más opciones según sea necesario -->
+                    </select>
+                </div>
+                <div id="paypal-button-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Script -->
+    <script src="./../js/jquery-1.11.0.min.js"></script>
+    <script src="./../js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="./../js/funciones_js/header_cliente_vistas.js"></script>
+    <script src="./../js/funciones_js/carrito_cliente.js"></script>
+    <script src="./../js/funciones_js/compra_paypal.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            iniciarPaypal();
+        });
+    </script>
+    <script src="./../js/bootstrap.bundle.min.js"></script>
+    <script src="./../js/templatemo.js"></script>
+    <script src="./../js/custom.js"></script>
+    <!-- End Script -->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="apple-touch-icon" href="img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="./../css/bootstrap.min.css">
+    <link rel="stylesheet" href="./../css/templatemo.css">
+    <link rel="stylesheet" href="./../css/style.css">
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="./../css/fontawesome.min.css">
+    <link href="./../css/style_header.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<style>
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    .dropdown span {
+        padding: 10px;
+        background-color: #f1f1f1;
+        cursor: pointer;
+        display: block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        margin-top: -10px; /* Ajuste para evitar superposición */
+        background-color: #f9f9f9;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .submenu {
+        position: static;
+        top: 0;
+        left: 100%;
+        margin-top: 0; /* Reiniciar el margen superior */
+        display: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content:hover .submenu {
+        display: block;
+    }
+
+    .dropdown:hover .submenu {
+        display: block;
+    }
+
+    .submenu span {
+        padding: 10px;
+        cursor: pointer;
+        display: block;
+    }
+    
+    /* Estilo para hacer el menú desplegable más ancho */
+    .dropdown-menu {
+        width: 200px; /* Ajusta el valor según tus preferencias */
+    }
+
+    /* Estilo para quitar el subrayado de los elementos del menú desplegable */
+    .dropdown-menu a {
+        text-decoration: none;
+    }
+
+    /* Estilo para cambiar el color del texto en los elementos del menú desplegable */
+    .dropdown-menu a {
+        color: #000; /* Puedes cambiar el color según tus preferencias */
+    }
+
+    /* Asegúrate de incluir este CSS en tu archivo de estilo o en el encabezado de tu HTML */
+    #agregarDropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .btn-agregar {
+        background-color: #28a745;
+        color: #ffffff;
+    }
+
+    .btn-editar,
+    .btn-eliminar {
+        background-color: #28a745;
+        color: #ffffff;
+        border-radius: 20px;
+        font-size: 16px;
+    }
+
+    .btn-eliminar {
+        background-color: #dc3545;
+    }
+
+    table {
+        font-size: 14px;
+    }
+</style>
+
+<!-- Topbar Start -->
+<div class="container-fluid">
+    <div class="row align-items-center py-3 px-xl-5">
+        <div class="col-lg-3 d-none d-lg-block">
+            <a href="" class="text-decoration-none">
+                <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                        class="text-primary font-weight-bold border px-3 mr-1">FERRE - FAMA</span></h1>
+            </a>
+        </div>
+        <div class="col-lg-6 col-6 text-left">
+            <form action="">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for products">
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-transparent text-primary">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3 col-6 text-right">
+            <a href="compras-administrador.html" class="btn border">
+                <i class="fas fa-shopping-cart text-primary"></i>
+            </a>
+            <a href="login.html" class="btn border">
+                <i class="fa fa-user" aria-hidden="true">Iniciar sesion</i>
+            </a>
+            <a href="register.html" class="btn border">
+                <i class="fa fa-user" aria-hidden="true">Registrarse</i>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+
+<!-- Navbar Start -->
+<div class="container-fluid mb-5">
+    <div class="row border-top px-xl-5">
+        <div class="col-lg-9">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        
+                        <div class="container">
+                            <form id="redireccionForm" action="" method="get">
+                                <div class="form-group">
+                                    <select class="form-control" id="acciones" name="accion" onchange="redirigir()">
+                                        <option value="" disabled selected>Selecciona una acción</option>
+                                        <option value="agregarFamilias">Agregar Familias</option>
+                                        <option value="agregarCategorias">Agregar Categorías</option>
+                                        <option value="agregarSubcategorias">Agregar Subcategorías</option>
+                                        <option value="agregarMarcas">Agregar Marcas</option>
+                                        <option value="agregarSubmarcas">Agregar Submarcas</option>
+                                        <option value="agregarProductos">Agregar Productos</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="col-lg-3 d-flex justify-content-end align-items-center">
+            
+        </div>
+    </div>
+    <hr class="my-8">
+</div>
+<!-- Navbar End -->
+
+<div class="container">
+        <h2 class="mb-4">CRUD de Productos</h2>
+
+        <!-- Botón para abrir el modal de agregar submarca -->
+        <button type="button" class="btn btn-success text-white mt-4" data-bs-toggle="modal"
+            data-bs-target="#modalAgregarProducto">
+            Agregar Productos
+        </button>
+
+        <!-- Tabla para mostrar los productos -->
+        <table class="table mt-4" id="productosTabla">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Unidad de medida</th>
+                    <th>Precio</th>
+                    <th>Precio con descuento</th>
+                    <th>Codigo de barras</th>
+                    <th>Codigo interno</th>
+                    <th>Cantidad de inventario</th>
+                    <th>Subcategoria</th>
+                    <th>Submarca</th>
+                    <th>Imagenes</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+</div>
+
+<!-- Modal para agregar Producto -->
+<div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Contenido del formulario para agregar producto -->
+                    <form id="agregarProductoForm">
+                        <div class="row">
+                            <!-- Columna para la imagen y la tabla -->
+                            <div class="col-md-6">
+                                <!-- Campo de entrada de archivos para imágenes -->
+                                <div class="mb-3">
+                                    <label for="imagenes" class="form-label">Imágenes:</label>
+                                    <input type="file" class="form-control" id="fileInput" multiple accept="image/*">
+                                </div>
+                            </div>
+                            <!-- Columna para los datos del producto -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="nombreProducto" class="form-label">Nombre del Producto:</label>
+                                    <input type="text" class="form-control" id="nombreProducto" required
+                                        style="border: 1px solid #343541;">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="descripcion" class="form-label">Descripción:</label>
+                                    <textarea class="form-control" id="descripcion" rows="3"
+                                        style="border: 1px solid #343541;"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="unidad_medida" class="form-label">Unidad de medida:</label>
+                                    <input type="text" class="form-control" id="unidad_medida" required
+                                        style="border: 1px solid #343541;">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="precio" class="form-label">Precio:</label>
+                                    <input type="number" class="form-control" id="precio" required
+                                        style="border: 1px solid #343541;">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="precioDescuento" class="form-label">Precio con Descuento:</label>
+                                    <input type="number" class="form-control" id="precioDescuento"
+                                        style="border: 1px solid #343541;">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="codigoBarras" class="form-label">Código de Barras:</label>
+                                    <input type="text" class="form-control" id="codigoBarras"
+                                        style="border: 1px solid #343541;">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="codigoInterno" class="form-label">Código Interno:</label>
+                                    <input type="text" class="form-control" id="codigoInterno"
+                                        style="border: 1px solid #343541;">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Cantidad de inventario" class="form-label">Cantidad de
+                                        inventario:</label>
+                                    <input type="text" class="form-control" id="cantidadInventario"
+                                        style="border: 1px solid #343541;">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subcategoriaCombo" class="form-label">Subcategoría:</label>
+                                    <select class="form-select" id="subcategoriaCombo" required 
+                                    style="border: 1px solid #343541;"></select>
+                                </div>  
+                                <div class="mb-3">
+                                    <label for="submarcaCombo" class="form-label">Submarca:</label>
+                                    <select class="form-select" id="submarcaCombo" required
+                                        style="border: 1px solid #343541;">
+                                    </select>
+                                </div>
+                                                                                                
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarProducto()">Guardar</button>
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- Modal para editar producto -->
+<div class="modal fade" id="modalEditarProducto" tabindex="-1" aria-labelledby="modalEditarProductoLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEditarProductoLabel">Editar Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario para editar el producto -->
+                <form>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="editNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="editNombre" placeholder="Nombre del producto">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="editDescripcion" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="editDescripcion" rows="3"
+                                placeholder="Descripción del producto"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="editUnidadMedida" class="form-label">Unidad de medida</label>
+                            <input type="text" class="form-control" id="editUnidadMedida"
+                                placeholder="Unidad de medida">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="editPrecio" class="form-label">Precio</label>
+                            <input type="number" class="form-control" id="editPrecio" placeholder="Precio del producto">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="editPrecioDescuento" class="form-label">Precio con descuento</label>
+                            <input type="number" class="form-control" id="editPrecioDescuento"
+                                placeholder="Precio con descuento del producto">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="editCodigoBarras" class="form-label">Código de barras</label>
+                            <input type="text" class="form-control" id="editCodigoBarras"
+                                placeholder="Código de barras del producto">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="editCodigoInterno" class="form-label">Código interno</label>
+                            <input type="text" class="form-control" id="editCodigoInterno"
+                                placeholder="Código interno del producto">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="editCantidadInventario" class="form-label">Cantidad de inventario</label>
+                            <input type="text" class="form-control" id="editCantidadInventario"
+                                placeholder="Cantidad de inventario del producto">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="editSubcategoria" class="form-label">Subcategoría</label>
+                            <input type="text" class="form-control" id="editSubcategoria"
+                                placeholder="Subcategoría del producto">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="editSubmarca" class="form-label">Submarca</label>
+                            <input type="text" class="form-control" id="editSubmarca" placeholder="Submarca del producto">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="editImagen1" class="form-label">Imagen 1</label>
+                            <input type="file" class="form-control" id="editImagen1">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="editImagen2" class="form-label">Imagen 2</label>
+                            <input type="file" class="form-control" id="editImagen2">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="editImagen3" class="form-label">Imagen 3</label>
+                            <input type="file" class="form-control" id="editImagen3">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="editImagen4" class="form-label">Imagen 4</label>
+                            <input type="file" class="form-control" id="editImagen4">
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-primary">Guardar cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="./../js/jquery-1.11.0.min.js"></script>
+<script src="./../js/jquery-migrate-1.2.1.min.js"></script>
+
+<!-- Bootstrap y Select2 (asegúrate de cargar Bootstrap antes que Select2) -->
+<script src="./../js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<!-- Tus scripts personalizados -->
+<script src="./../js/funciones_js/productos_crud.js"></script>
+<script src="./../js/funciones_js/header_admin_vistas.js"></script>
+
+<!-- Otros scripts (si los tienes) -->
+<script src="./../js/templatemo.js"></script>
+<script src="./../js/custom.js"></script>
+
+
+
+</body>
+
+</html>
